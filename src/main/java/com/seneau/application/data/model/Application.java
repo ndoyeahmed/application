@@ -16,6 +16,7 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String clientId;
     private String applicationName;
     private String description;

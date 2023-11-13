@@ -1,4 +1,4 @@
-package com.seneau.application.data.dto;
+package com.seneau.application.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

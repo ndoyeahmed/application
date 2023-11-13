@@ -1,13 +1,12 @@
 package com.seneau.application.services.implement;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.seneau.application.data.dto.ApplicationRequest;
-import com.seneau.application.data.dto.ApplicationResponse;
+import com.seneau.application.web.dto.ApplicationRequest;
+import com.seneau.application.web.dto.ApplicationResponse;
 import com.seneau.application.data.model.Application;
 import com.seneau.application.data.repository.ApplicationRepository;
 import com.seneau.application.services.ApplicationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,5 +29,10 @@ public class ApplicationServiceImplement implements ApplicationService {
         return applications
                 .stream()
                 .map(application -> objectMapper.convertValue(application, ApplicationResponse.class)).toList();
+    }
+
+    @Override
+    public Application getApplicationByClientId(String clientId) {
+        return applicationRepository.findByClientIdAndActiveTrue(clientId).orElse(null);
     }
 }
